@@ -1,0 +1,10 @@
+label,
+input,
+textarea,
+button,
+label:focus,
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
