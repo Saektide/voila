@@ -10,6 +10,7 @@
             'text-mono-5 dark:text-mono-7 hover:text-mono-1 dark:hover:text-mono-10 hover:bg-mono-10 dark:hover:bg-mono-2': currentRoute !== link.name
           }"
           draggable="false"
+          @click.native="handleLinkClick"
         >
           <component
             :is="`solid-${link.icon}-icon`"
@@ -65,7 +66,10 @@ export default {
     this.setRoute(this.pathNames[this.$route.path])
   },
   methods: {
-    ...mapMutations(['setRoute'])
+    ...mapMutations(['setRoute']),
+    handleLinkClick() {
+      this.$emit('navigate')
+    }
   }
 }
 </script>

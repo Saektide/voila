@@ -2,41 +2,28 @@
   <div id="voila_wrapper_app">
     <div
       id="va_sidebar_nav"
+      class="transform"
       :class="{
         '-translate-x-full lg:translate-x-0': !mobileSidebarShow,
         'shadow-xl': mobileSidebarShow
       }"
     >
+      <div>
+        <div
+          id="va_mobile_controls"
+          class="lg:hidden flex relative py-4"
+        >
+          <button
+            class="va_mobile_btn_sidebar_menu_toggle"
+            @click="() => { mobileSidebarShow = !mobileSidebarShow }"
+          >
+            <outline-x-icon v-if="mobileSidebarShow" class="w-6 pointer-events-none" />
+            <outline-menu-alt-4-icon v-else class="w-6 pointer-events-none" />
+          </button>
+        </div>
+      </div>
       <sidebar-skeleton v-if="lazyChecking" />
-      <sidebar-loaded v-else />
-    </div>
-    <div
-      id="va_mobile_controls"
-      class="lg:hidden flex top-4 px-4 z-40"
-      :class="{
-        absolute: !mobileSidebarShow,
-        fixed: mobileSidebarShow
-      }"
-    >
-      <button
-        class="
-          duration-75
-          cursor-pointer
-          p-2
-          rounded-lg
-          hover:bg-opacity-20
-          text-mono-0
-          hover:bg-mono-0
-        "
-        @click="
-          () => {
-            mobileSidebarShow = !mobileSidebarShow
-          }
-        "
-      >
-        <outline-x-icon v-if="mobileSidebarShow" class="w-6 pointer-events-none" />
-        <outline-menu-alt-4-icon v-else class="w-6 pointer-events-none" />
-      </button>
+      <sidebar-loaded v-else @navigate="forceHideSidebar" />
     </div>
     <div
       id="va_content_wrapper"
@@ -51,7 +38,7 @@
         :class="{
           regular: !isHomeView,
           'p-4': !isHomeView && isScrollOnTop,
-          'p-8 border-mono-9 dark:border-mono-3': isHomeView && isScrollOnTop,
+          'p-4 md:p-8 border-mono-9 dark:border-mono-3': isHomeView && isScrollOnTop,
           home_scrolling: isHomeView && !isScrollOnTop,
           sticky: isHomeView
         }"
@@ -65,8 +52,20 @@
         >
           <div
             id="va_header_content"
-            class="text-mono-5 dark:text-mono-10 flex flex-col select-none"
+            class="text-mono-5 dark:text-mono-10 flex gap-4 select-none items-center justify-start"
           >
+            <div
+              id="va_mobile_controls"
+              class="lg:hidden inline-flex relative"
+            >
+              <button
+                class="va_mobile_btn_sidebar_menu_toggle"
+                @click="() => { mobileSidebarShow = !mobileSidebarShow }"
+              >
+                <outline-x-icon v-if="mobileSidebarShow" class="w-6 pointer-events-none" />
+                <outline-menu-alt-4-icon v-else class="w-6 pointer-events-none" />
+              </button>
+            </div>
             <div class="flex flex-col justify-center items-start relative">
               <div
                 class="duration-300 overflow-hidden"
@@ -187,6 +186,9 @@ export default {
         return false
       }
       this.setScrollStatus(isScrollOnTop_)
+    },
+    forceHideSidebar() {
+      this.mobileSidebarShow = false
     }
   }
 }
@@ -198,14 +200,18 @@ export default {
 }
 
 #va_sidebar_nav {
-  @apply fixed inset-y-0 lg:sticky lg:shadow-xl transform duration-200 z-30 p-8 pt-20 lg:pt-8 bg-mono-12 dark:bg-mono-1 text-mono-0 dark:text-mono-10 md:shadow-xl flex items-start justify-center w-full md:w-96 overflow-hidden;
+  @apply fixed inset-y-0 lg:sticky lg:shadow-xl duration-200 z-30 p-8 pt-4 lg:pt-8 bg-mono-12 dark:bg-mono-1 text-mono-0 dark:text-mono-10 md:shadow-xl flex flex-col items-start justify-center w-full md:w-96 overflow-hidden;
 }
 
 #va_header_wrapper.regular {
-  @apply bg-mono-11 dark:bg-mono-2 border-mono-9 dark:border-mono-3 ml-1 lg:ml-0 px-16;
+  @apply bg-mono-11 dark:bg-mono-2 border-mono-9 dark:border-mono-3 px-6 lg:px-16;
 }
 
 #va_header_wrapper.home_scrolling {
   @apply bg-mono-10 dark:bg-mono-2 p-6 lg:px-16 border-transparent dark:border-mono-3;
+}
+
+.va_mobile_btn_sidebar_menu_toggle {
+  @apply duration-75 cursor-pointer p-2 rounded-lg hover:bg-opacity-20 dark:hover:bg-opacity-20 text-mono-0 dark:text-mono-9 hover:bg-mono-0 dark:hover:bg-mono-9;
 }
 </style>
