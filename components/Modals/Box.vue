@@ -7,14 +7,14 @@
     }"
   >
     <header v-if="modalData.title" class="va__modal_box_header">
-      <div class="lg:hidden w-12 h-12 bg-blue-6 bg-opacity-50 text-blue-2 flex relative rounded-xl">
+      <div class="lg:hidden w-12 h-12 bg-blue-6 bg-opacity-50 dark:bg-opacity-30 text-blue-2 dark:text-blue-5 flex relative rounded-xl">
         <outline-cube-icon class="w-8 m-auto" />
       </div>
       <span v-text="modalData.title" />
     </header>
     <main v-if="!modalData.component" class="flex gap-5 select-none overflow-y-auto">
       <div class="hidden lg:block flex-1">
-        <div class="w-10 h-10 bg-blue-6 bg-opacity-50 text-blue-2 flex relative rounded-xl">
+        <div class="w-10 h-10 bg-blue-6 bg-opacity-50 dark:bg-opacity-30 text-blue-2 dark:text-blue-5 flex relative rounded-xl">
           <outline-cube-icon class="w-6 m-auto" />
         </div>
       </div>
