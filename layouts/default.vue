@@ -216,6 +216,6 @@ export default {
 }
 
 #va_header_wrapper.home_scrolling #va_header_title {
-  @apply pr-16;
+  @apply pr-16 lg:pr-0;
 }
 </style>
