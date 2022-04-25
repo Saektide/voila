@@ -1,5 +1,5 @@
 <template>
-  <div id="va_card"></div>
+  <div id="va_card" />
 </template>
 
 <script>
