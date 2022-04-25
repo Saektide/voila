@@ -1,9 +1,9 @@
 <template>
   <label
-    class="text-mono-3 rounded-xl py-3 px-5 border w-full flex items-center justify-between cursor-pointer duration-100 select-none"
+    class="text-mono-3 dark:text-mono-8 rounded-xl py-3 px-5 border w-full flex items-center justify-between cursor-pointer duration-100 select-none"
     :class="{
-      'bg-blue-7 hover:bg-blue-6 border-blue-5 text-blue-3': isChecked,
-      'border-mono-9 hover:bg-mono-9': !isChecked
+      'bg-blue-7 dark:bg-opacity-10 hover:bg-blue-6 border-blue-5 dark:border-opacity-50 text-blue-3 dark:text-blue-6': isChecked,
+      'border-mono-9 dark:border-mono-3 hover:bg-mono-9 dark:hover:bg-mono-3': !isChecked
     }"
     :for="`settings-${id}`"
   >

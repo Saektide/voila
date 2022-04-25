@@ -7,8 +7,8 @@
         </div>
       </div>
       <div>
-        <div class="text-lg font-semibold text-mono-0" v-text="action.title" />
-        <div class="text-mono-4" v-text="action.summary" />
+        <div class="text-lg font-semibold text-mono-0 dark:text-mono-11" v-text="action.title" />
+        <div class="text-mono-4 dark:text-mono-7" v-text="action.summary" />
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@ export default {
 
 <style scoped>
 .va_dev__action_box {
-  @apply bg-mono-10 hover:bg-mono-9 rounded-xl p-4 cursor-pointer duration-75;
+  @apply bg-mono-10 dark:bg-transparent hover:bg-mono-9 dark:hover:bg-mono-3 rounded-xl p-4 cursor-pointer duration-75;
 }
 
 .va_dev__action_box_content {
@@ -44,6 +44,6 @@ export default {
 }
 
 .va_dev__action_box_icon_wrapper {
-  @apply w-8 h-8 bg-blurple-5 bg-opacity-30 text-blurple-2 relative flex rounded-lg;
+  @apply w-8 h-8 bg-blurple-5 bg-opacity-30 dark:bg-opacity-20 text-blurple-2 dark:text-blurple-5 relative flex rounded-lg;
 }
 </style>

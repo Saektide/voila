@@ -1,6 +1,6 @@
 <template>
   <button
-    class="text-mono-3 border-mono-9 hover:bg-mono-9 rounded-xl py-3 px-5 border w-full flex items-center justify-between cursor-pointer duration-100 select-none"
+    class="text-mono-3 dark:text-mono-8 border-mono-9 dark:border-mono-3 hover:bg-mono-9 dark:hover:bg-mono-3 dark:hover:text-mono-10 rounded-xl py-3 px-5 border w-full flex items-center justify-between cursor-pointer duration-100 select-none"
     @click="handleDropdown"
   >
     <span class="pointer-events-none">
