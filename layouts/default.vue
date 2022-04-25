@@ -34,7 +34,7 @@
       <div
         v-if="currentTitle"
         id="va_header_wrapper"
-        class="text-mono-4 w-full top-0 z-20 border-b duration-300"
+        class="text-mono-4 w-full top-0 z-20 border-b duration-500"
         :class="{
           regular: !isHomeView,
           'p-4': !isHomeView && isScrollOnTop,
@@ -44,7 +44,7 @@
         }"
       >
         <div
-          class="max-w-sm md:max-w-xl mx-auto duration-300"
+          class="max-w-sm md:max-w-xl mx-auto duration-500"
           :class="{
             'lg:max-w-3xl xl:max-w-5xl': !isHomeView,
             'lg:max-w-2xl': isHomeView
@@ -66,9 +66,9 @@
                 <outline-menu-alt-4-icon v-else class="w-6 pointer-events-none" />
               </button>
             </div>
-            <div class="flex flex-col justify-center items-start relative">
+            <div class="flex flex-col flex-1 justify-center items-start relative">
               <div
-                class="duration-300 overflow-hidden"
+                class="duration-500 overflow-hidden"
                 :class="{
                   '-mt-5 opacity-0': !isHomeView || !isScrollOnTop
                 }"
@@ -77,7 +77,7 @@
               </div>
               <span
                 id="va_header_title"
-                class="font-semibold duration-300"
+                class="font-semibold duration-500"
                 :class="{
                   'min-w-full text-2xl': !isScrollOnTop,
                   'min-w-0 text-3xl': isScrollOnTop,
@@ -200,11 +200,11 @@ export default {
 }
 
 #va_sidebar_nav {
-  @apply fixed inset-y-0 lg:sticky lg:shadow-xl duration-200 z-30 p-8 pt-4 lg:pt-8 bg-mono-12 dark:bg-mono-1 text-mono-0 dark:text-mono-10 md:shadow-xl flex flex-col items-start justify-center w-full md:w-96 overflow-hidden;
+  @apply fixed inset-y-0 lg:sticky lg:shadow-xl duration-300 z-30 p-8 pt-4 lg:pt-8 bg-mono-12 dark:bg-mono-1 text-mono-0 dark:text-mono-10 md:shadow-xl flex flex-col items-start justify-center w-full md:w-96 overflow-hidden;
 }
 
 #va_header_wrapper.regular {
-  @apply bg-mono-11 dark:bg-mono-2 border-mono-9 dark:border-mono-3 px-6 lg:px-16;
+  @apply bg-mono-11 dark:bg-mono-2 border-mono-9 dark:border-mono-3 px-4 lg:px-16;
 }
 
 #va_header_wrapper.home_scrolling {
@@ -213,5 +213,9 @@ export default {
 
 .va_mobile_btn_sidebar_menu_toggle {
   @apply duration-75 cursor-pointer p-2 rounded-lg hover:bg-opacity-20 dark:hover:bg-opacity-20 text-mono-0 dark:text-mono-9 hover:bg-mono-0 dark:hover:bg-mono-9;
+}
+
+#va_header_wrapper.home_scrolling #va_header_title {
+  @apply pr-16;
 }
 </style>
