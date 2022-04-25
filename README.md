@@ -1,3 +1,4 @@
+![Voila Demo](.github/assets/demo.gif)
 # Voila
 Voila <small>(`/vwäˈlä/`)</small> es un cliente web que usa los servicios de [Ualá Argentina](https://www.uala.com.ar/), sin usar trackers como Braze o UXCam. Utiliza funciones de Netlify para evitar conflictos con las peticiones entre dominios diferentes (CORS).
 
