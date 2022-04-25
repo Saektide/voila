@@ -3,7 +3,7 @@
     <div id="va_home_transactions_wrapper">
       <div
         v-if="fetching.includes('transactions')"
-        class="flex items-center justify-center text-mono-2"
+        class="flex items-center justify-center text-mono-2 dark:text-mono-7"
       >
         <loading-icon class="w-10 animate-spin-slow opacity-75" />
       </div>
