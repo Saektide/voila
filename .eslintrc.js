@@ -16,6 +16,6 @@ module.exports = {
   ],
   rules: {
     'space-before-function-paren': 'off',
-    'arrow-parens': ['always', { requireForBlockBody: false }]
+    'arrow-parens': 'off'
   }
 }
