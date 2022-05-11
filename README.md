@@ -47,3 +47,6 @@ $ netlify dev
 
 ## ⚖ Licencia
 Voila está bajo la licencia [MIT](/LICENSE).
+El logotipo y assets de Ualá pertenecen a Ualá Argentina / Alau Tecnología S.A.U., todos los derechos reservados a sus respectivos autores.
+El logotipo de MasterCard pertenece a Mastercard International Incorporated, todos los derechos reservados a sus respectivos autores.
+Voila hace uso de dichos logotipos pero no es autor de los materiales mencionados y tampoco tiene permitido editarlos.
