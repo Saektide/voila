@@ -7,7 +7,7 @@
     }"
   >
     <header v-if="modalData.title" class="va__modal_box_header">
-      <div class="lg:hidden w-12 h-12 bg-blue-6 bg-opacity-50 dark:bg-opacity-30 text-blue-2 dark:text-blue-5 flex relative rounded-xl">
+      <div v-if="!modalData.component" class="lg:hidden w-12 h-12 bg-blue-6 bg-opacity-50 dark:bg-opacity-30 text-blue-2 dark:text-blue-5 flex relative rounded-xl">
         <outline-cube-icon class="w-8 m-auto" />
       </div>
       <span v-text="modalData.title" />
@@ -22,8 +22,8 @@
         <p class="block" v-text="modalData.body" />
       </div>
     </main>
-    <div v-else class="relative w-full overflow-y-auto">
-      <component :is="`modals-use-${modalData.component}`" :payload="modalData.componentPayload" />
+    <div v-else class="relative w-full overflow-y-auto text-sm lg:text-base">
+      <component :is="`modals-use-${modalData.component}`" ref="use_component" :payload="modalData.componentPayload" />
     </div>
     <footer class="mt-6">
       <div class="flex flex-col-reverse md:flex-row justify-end items-center gap-5">
@@ -33,6 +33,7 @@
           class="w-full lg:w-auto"
           :role="action.role"
           :level="action.level"
+          :busy="action.busy"
           @click.native="handleAction(action)"
         >
           {{ action.label }}
@@ -56,6 +57,10 @@ export default {
       if (actionObject.dismiss) {
         return this.$modals.dismissFront()
       }
+
+      if (typeof actionObject.exec === 'function') {
+        return actionObject.exec.bind(this.$refs.use_component)()
+      }
     }
   }
 }
@@ -63,7 +68,7 @@ export default {
 
 <style scoped>
 .va__modal_box {
-  @apply flex flex-col overflow-hidden transform mb-0 w-full lg:w-auto mt-auto lg:m-auto lg:max-w-xl lg:min-w-sm xl:max-w-3xl xl:min-w-xl p-8 bg-mono-12 dark:bg-mono-2 dark:text-mono-9 text-mono-0 rounded-t-xl lg:rounded-b-xl shadow-lg duration-200 max-h-screen--md;
+  @apply flex flex-col overflow-hidden transform mb-0 w-full lg:w-auto mt-auto lg:m-auto lg:max-w-xl lg:min-w-sm xl:max-w-3xl xl:min-w-xl p-8 bg-mono-12 dark:bg-mono-2 dark:text-mono-9 text-mono-0 rounded-t-xl lg:rounded-b-xl shadow-lg duration-200 max-h-screen--sm;
 }
 
 .va__modal_box.invisible {
@@ -71,6 +76,6 @@ export default {
 }
 
 .va__modal_box_header {
-  @apply flex flex-col lg:flex-row gap-5 items-center justify-center lg:justify-start text-3xl font-bold select-none mb-6;
+  @apply flex flex-col lg:flex-row gap-5 items-center justify-center lg:justify-start text-xl md:text-2xl lg:text-3xl font-bold select-none mb-2 lg:mb-6;
 }
 </style>
