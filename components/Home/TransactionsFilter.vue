@@ -1,6 +1,8 @@
 <template>
   <div id="va_home_transactions_filter" class="flex items-center justify-end">
-    <btn icon="adjustments" @click.native="handleFilterButton"> Filtrar </btn>
+    <btn icon="adjustments" @click.native="handleFilterButton">
+      Filtrar
+    </btn>
   </div>
 </template>
 
