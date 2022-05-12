@@ -5,7 +5,8 @@ const errors = {
     UNHANDLED_UALA_EXCEPTION: 1 << 2,
     INVALID_REQ_BODY: 1 << 3,
     UALA_INVALID_CREDENTIALS: 1 << 4,
-    UALA_AUTH_MFA_REQUIRED: 1 << 5
+    UALA_AUTH_MFA_REQUIRED: 1 << 5,
+    INVALID_HTTP_METHOD: 1 << 6
   },
   messages: {
     RESPONSE_NOT_AN_OBJECT: 'La respuesta en la función de Netlify debe ser un objeto JSON.',
@@ -13,7 +14,8 @@ const errors = {
     UNHANDLED_UALA_EXCEPTION: 'Ha ocurrido una excepción no controlada en la API del servicio de Ualá.',
     INVALID_REQ_BODY: 'El body para esta solicitud es invalido.',
     UALA_INVALID_CREDENTIALS: 'Las credenciales en el servicio de Ualá no son correctas. Revisa tu usuario y contraseña.',
-    UALA_AUTH_MFA_REQUIRED: 'Ualá ha solicitado que valides tu sesión a través de un código enviado por SMS.'
+    UALA_AUTH_MFA_REQUIRED: 'Ualá ha solicitado que valides tu sesión a través de un código enviado por SMS.',
+    INVALID_HTTP_METHOD: 'Método HTTP no válido con este endpoint.'
   }
 }
 
