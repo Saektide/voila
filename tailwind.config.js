@@ -116,7 +116,8 @@ module.exports = {
         '5xl': '64rem'
       },
       maxHeight: {
-        'screen--md': 'calc(100vh - 12rem)'
+        'screen--md': 'calc(100vh - 12rem)',
+        'screen--sm': 'calc(100vh - 4rem)'
       }
     }
   },
