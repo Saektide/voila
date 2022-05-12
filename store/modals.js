@@ -23,5 +23,13 @@ export const mutations = {
   },
   shiftFront (state) {
     state.shift()
+  },
+  frontSetActionBusy (state, actionId) {
+    const actionIndex = state[0].actions.findIndex((action) => action.id === actionId)
+    Vue.set(state[0].actions[actionIndex], 'busy', true)
+  },
+  frontSetActionIdle (state, actionId) {
+    const actionIndex = state[0].actions.findIndex((action) => action.id === actionId)
+    Vue.set(state[0].actions[actionIndex], 'busy', false)
   }
 }
