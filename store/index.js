@@ -1,9 +1,13 @@
+import Vue from 'vue'
+
 export const state = () => ({
   balance: null,
   transactions: [],
+  card: {},
   fetching: [
     'balance',
-    'transactions'
+    'transactions',
+    'card'
   ],
   currentRoute: '',
   isScrollOnTop: true
@@ -25,6 +29,9 @@ export const getters = {
   balance (state) {
     return state.balance
   },
+  card (state) {
+    return state.card
+  },
   currentRoute (state) {
     return state.currentRoute
   },
@@ -39,6 +46,12 @@ export const mutations = {
   },
   setTransactions (state, transactionsArray) {
     state.transactions = transactionsArray
+  },
+  setCard (state, cardObject) {
+    state.card = cardObject
+  },
+  setCardStatus (state, newCardStatus) {
+    Vue.set(state.card, 'status', newCardStatus)
   },
   addTransaction (state, transactionObject) {
     state.transactions.push(transactionObject)

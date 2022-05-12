@@ -161,22 +161,26 @@ export default {
     this.fetchTransactions()
   },
   methods: {
-    ...mapMutations(['setBalance', 'addFetching', 'removeFetching', 'setScrollStatus']),
+    ...mapMutations(['setBalance', 'setCard', 'addFetching', 'removeFetching', 'setScrollStatus']),
     ...mapMutations({
       setTransactions: 'transactions/setTransactions'
     }),
     async fetchTransactions() {
       this.addFetching('transactions')
       this.addFetching('balance')
+      this.addFetching('card')
       try {
-        const res = await this.$axios.$get('transactions')
-        this.setTransactions(res.transactions)
-        this.setBalance(res.balance.availableBalance)
+        const resTransactions = await this.$axios.$get('transactions')
+        const resCard = await this.$axios.$get('card')
+        this.setTransactions(resTransactions.transactions)
+        this.setBalance(resTransactions.balance.availableBalance)
+        this.setCard(resCard.cards[0])
       } catch (err) {
         console.warn(err)
       }
       this.removeFetching('transactions')
       this.removeFetching('balance')
+      this.removeFetching('card')
     },
     handleContentWrapperScroll(e) {
       const isScrollOnTop_ = e.target.scrollTop === 0
