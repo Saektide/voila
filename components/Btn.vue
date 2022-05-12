@@ -5,9 +5,23 @@
       primary_normal: isPrimary && level === 'normal',
       secondary_normal: !isPrimary && level === 'normal'
     }"
+    :disabled="busy"
   >
-    <component :is="`outline-${icon}-icon`" v-if="icon" class="w-6" />
-    <span>
+    <span
+      class="inline-block absolute m-auto duration-200 transform"
+      :class="{
+        'opacity-0 pointer-events-none scale-90': !busy
+      }"
+    >
+      <loading-icon class="w-6 text-mono-12 relative animate-spin-slow" />
+    </span>
+    <span
+      class="inline-flex items-center justify-center gap-3 duration-200 transform"
+      :class="{
+        'opacity-0 pointer-events-none scale-110': busy
+      }"
+    >
+      <component :is="`outline-${icon}-icon`" v-if="icon" class="w-6" />
       <slot />
     </span>
   </button>
@@ -35,6 +49,10 @@ export default {
     icon: {
       type: String,
       default: null
+    },
+    busy: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -47,7 +65,7 @@ export default {
 
 <style scoped>
 .va_btn {
-  @apply py-3 lg:py-2 px-6 lg:px-5 rounded-lg duration-100 gap-3 flex items-center justify-center;
+  @apply py-3 lg:py-2 px-6 lg:px-5 rounded-lg duration-100 flex items-center justify-center;
 }
 
 .va_btn.primary_normal {
