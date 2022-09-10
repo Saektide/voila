@@ -46,20 +46,26 @@ export default {
   auth: {
     strategies: {
       local: {
+        scheme: 'refresh',
+        refreshToken: {
+          property: 'refresh_token',
+          maxAge: 60 * 60 * 24 * 30
+        },
         endpoints: {
           login: { url: 'login', method: 'post', propertyName: 'access_token' },
           user: { url: 'whoami', method: 'get', propertyName: 'user' },
+          refresh: { url: 'refresh', method: 'post' },
           logout: false
         },
         token: {
+          property: 'access_token',
           global: true,
-          maxAge: 86400
+          maxAge: 3600
         }
       }
     }
   },
-  build: {
-  },
+  build: {},
   tailwindcss: {
     viewer: false
   }
