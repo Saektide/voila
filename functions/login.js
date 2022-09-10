@@ -5,8 +5,11 @@ const { ualaAuth } = require('./utils/api')
 const err = require('./utils/errors').get
 const { auth0_client_id } = require('./utils/defaultTokens').default
 
+const Logger = require('./utils/logger')
+const log = new Logger('login')
+
 /**
- * Descifra los tokens del proxy cognito de Ualá el cual la acceso
+ * Descifra los tokens del proxy cognito de Ualá el cual brinda acceso
  * a las APIs del mismo servicio.
  * @param {String} accessToken Auth0 access token
  */
@@ -87,6 +90,7 @@ async function loginWithPassword (username, password) {
     const { access_token, refresh_token } = getCognitoTokens(auth0Token)
     return { access_token, refresh_token, auth0_token: auth0Token }
   } catch (err) {
+    log.error(err.response.data)
     return { error: err.response.data }
   }
 }
