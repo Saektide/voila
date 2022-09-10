@@ -1,4 +1,3 @@
-require('dotenv').config()
 const axios = require('axios').default
 
 exports.ualaService = axios.create({
@@ -13,6 +12,14 @@ exports.ualaAuth = axios.create({
   headers: {
     'User-Agent': 'okhttp/4.2.1',
     'Auth0-Client': 'eyJuYW1lIjoiQXV0aDAuQW5kcm9pZCIsImVudiI6eyJhbmRyb2lkIjoiMjkifSwidmVyc2lvbiI6IjEuMjMuMCJ9'
+  }
+})
+
+exports.ualaCognito = axios.create({
+  baseURL: 'https://cognito-idp.us-east-1.amazonaws.com/',
+  headers: {
+    'User-Agent': 'voila/0.0.1',
+    'X-Amz-Target': 'AWSCognitoIdentityProviderService.InitiateAuth'
   }
 })
 
