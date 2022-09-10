@@ -136,7 +136,7 @@ export default {
     currentTitle() {
       const viewTitles = {
         home: this.availableBalance,
-        transfers: 'Transferencias',
+        contacts: 'Contactos',
         card: 'Tarjeta',
         settings: 'Configuración',
         dev: 'Herramientas de desarrollo'
@@ -161,26 +161,24 @@ export default {
     this.fetchTransactions()
   },
   methods: {
-    ...mapMutations(['setBalance', 'setCard', 'addFetching', 'removeFetching', 'setScrollStatus']),
+    ...mapMutations(['setBalance', 'setCard', 'setContacts', 'addFetching', 'removeFetching', 'setScrollStatus']),
     ...mapMutations({
       setTransactions: 'transactions/setTransactions'
     }),
     async fetchTransactions() {
-      this.addFetching('transactions')
-      this.addFetching('balance')
-      this.addFetching('card')
+      this.addFetching(['transactions', 'balance', 'card', 'contacts'])
       try {
         const resTransactions = await this.$axios.$get('transactions')
         const resCard = await this.$axios.$get('card')
+        const resContacts = await this.$axios.$get('contacts')
         this.setTransactions(resTransactions.transactions)
         this.setBalance(resTransactions.balance.availableBalance)
         this.setCard(resCard.cards[0])
+        this.setContacts(resContacts.accounts)
       } catch (err) {
         console.warn(err)
       }
-      this.removeFetching('transactions')
-      this.removeFetching('balance')
-      this.removeFetching('card')
+      this.removeFetching(['transactions', 'balance', 'card', 'contacts'])
     },
     handleContentWrapperScroll(e) {
       const isScrollOnTop_ = e.target.scrollTop === 0
@@ -198,7 +196,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 #voila_wrapper_app {
   @apply flex flex-row bg-mono-11 dark:bg-mono-2 dark:text-mono-8 w-full fixed h-full inset-y-0 overflow-hidden;
 }

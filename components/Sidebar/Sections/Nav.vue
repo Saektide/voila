@@ -38,13 +38,13 @@ export default {
     return {
       links: [
         { name: 'home', label: 'Inicio', path: '/', icon: 'home' },
-        { name: 'transfers', label: 'Transferencias', path: '/@transfers', icon: 'switch-vertical' },
+        { name: 'contacts', label: 'Contactos', path: '/@contacts', icon: 'users' },
         { name: 'card', label: 'Tarjeta', path: '/@card', icon: 'credit-card' },
         { name: 'settings', label: 'Configuración', path: '/@settings', icon: 'cog' }
       ],
       pathNames: {
         '/': 'home',
-        '/@transfers': 'transfers',
+        '/@contacts': 'contacts',
         '/@card': 'card',
         '/@settings': 'settings',
         '/@dev': 'dev'

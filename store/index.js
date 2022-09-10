@@ -4,10 +4,12 @@ export const state = () => ({
   balance: null,
   transactions: [],
   card: {},
+  contacts: [],
   fetching: [
     'balance',
     'transactions',
-    'card'
+    'card',
+    'contacts'
   ],
   currentRoute: '',
   isScrollOnTop: true
@@ -32,6 +34,9 @@ export const getters = {
   card (state) {
     return state.card
   },
+  contacts (state) {
+    return state.contacts
+  },
   currentRoute (state) {
     return state.currentRoute
   },
@@ -53,14 +58,31 @@ export const mutations = {
   setCardStatus (state, newCardStatus) {
     Vue.set(state.card, 'status', newCardStatus)
   },
+  setContacts(state, contactsArray) {
+    state.contacts = contactsArray
+  },
   addTransaction (state, transactionObject) {
     state.transactions.push(transactionObject)
   },
   addFetching (state, endpointLabel) {
+    if (endpointLabel instanceof Array) {
+      endpointLabel.forEach((val) => {
+        if (state.fetching.includes(val)) { return }
+        state.fetching.push(val)
+      })
+      return
+    }
     if (state.fetching.includes(endpointLabel)) { return }
     state.fetching.push(endpointLabel)
   },
   removeFetching (state, endpointLabel) {
+    if (endpointLabel instanceof Array) {
+      endpointLabel.forEach((val) => {
+        if (!state.fetching.includes(val)) { return }
+        state.fetching.splice(state.fetching.indexOf(val), 1)
+      })
+      return
+    }
     if (!state.fetching.includes(endpointLabel)) { return }
     state.fetching.splice(state.fetching.indexOf(endpointLabel), 1)
   },
