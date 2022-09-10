@@ -1,6 +1,6 @@
 <template>
   <div id="va_settings">
-    <div id="va_settings_contents" class="flex flex-col gap-3">
+    <div id="va_settings_content" class="flex flex-col gap-3">
       <settings-separator no-margin>
         Apariencia
       </settings-separator>
