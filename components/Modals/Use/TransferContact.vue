@@ -70,8 +70,7 @@ export default {
                   amount,
                   usernameTo: contact.username
                 })
-                this.$modals.dismissFront()
-                this.$modals.dismissFront()
+                this.$modals.dismissAll()
                 this.$modals.invoke({
                   title: 'Transferencia realizada correctamente',
                   body: 'Has transferido plata a @' + contact.username + ' por Ualá.',

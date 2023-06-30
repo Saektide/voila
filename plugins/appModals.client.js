@@ -27,7 +27,7 @@ export default function (ctx, inject) {
       }
     },
     /**
-     * Hides the front modal, then delete it from the app's store.
+     * Hides the front modal, then deletes it from the app's store.
      */
     dismissFront () {
       store.commit('modals/hideFront')
@@ -37,6 +37,15 @@ export default function (ctx, inject) {
         if (store.getters['modals/front']) {
           store.commit('modals/showFront')
         }
+      }, 200)
+    },
+    /**
+     * Hides the front modal, then deletes all the stored modals from the store.
+     */
+    dismissAll () {
+      store.commit('modals/hideFront')
+      setTimeout(() => {
+        store.commit('modals/shiftAll')
       }, 200)
     },
     /**
